@@ -3,6 +3,12 @@ matrix:
                 - language: node_js # Your language e.g. node_js, python
                   node_js:
                           - '10' # node_js version
+                  dist : trusty
+                  addons:
+                        sonarcloud:
+                                organization : "dreamsh19"
+                                token:
+                                        secure : "HPMUvn5xpD+JHgbAIPfempPmq294DUKjeyWL/S5hD4fSO/JodvsZXBSfndjMRBP+a14zOgPATteDLr6tH0/4oZBrdwHLWkpLuJ6BaPNsPXyJJ343gCSpzmXIHzNfRyFYQt8/KXruMEd1Ycn4C+iMoBp7jbuQmNOFWWxV3Y61qMPI3qBmoXgJn8alJx0/K3O1nn1LLTh6U4qx+iFlIXlvE5eFZDmGgX7fp7xxlmqE71+5WCJcRNRd++9ADIolqCRY2zts++A7MkdEYAkkAxNKseGlveZx90FVFNs8wJlp2zG+R1gGAH03R0Dr3mMzElJXOhc/dXEeaZd0+wjKIeVzxE5UdMUP3lya82OylMv2YXDYzo14E8Jv/K+1Mk68J3N0n5z/aDjymitpzDIEqPLbUJD2QCdWX/3h2AKTX+9wAl7drZ7+DzkdczhMy8eOeVCiEVSW2daBeTm2LrPkJfT3dZeLuxXiKIm3xmaMmbIYey7AXDFkhx5k1W0RDqkxhH2O3N9oVjSf8Q+miElEf+FzQjzUEIofwRv5316l9cRFgpfXwNgwFvbVA61D5t4lyQA9S0fyVERuQoSYceas/m8DRtNCsfv3jClefqWx9hH1lEa0PJWu05p+SAwlxZrzwK2S8SH3dd9AfjSxYMkNQ34j98vrMgh7cO6a9LI16dSgKb4="      
                   before_install: # Script to run before install
                           - cd frontend
                   install: # Script to install required packages
@@ -10,3 +16,4 @@ matrix:
                   script: # Script to test your build
                           - ./node_modules/.bin/eslint src
                           - yarn test --coverage --watchAll=false
+                          - sonar-scanner
